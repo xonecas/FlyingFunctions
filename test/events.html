@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Flying Functions Events test</title>
+</head>
+<body>
+
+    <script src="../lib/flying-functions.js"></script>
+    <script>
+        console.log(FlyingFunctions);
+        console.log(FlyingFunctions.prototype);
+
+        var ff = new FlyingFunctions();
+
+        console.log(ff);
+
+        ff.on('test', function () {
+            console.log('Inside handler');
+            console.log(arguments);
+            console.log(this === ff);
+        });
+
+        ff.once('onetime', function () {
+            console.log(arguments);
+        });
+
+        ff.on('async', function () {
+            console.log(arguments);
+            console.log('is flying funcitions obj: ', this instanceof FlyingFunctions);
+        });
+
+        ff.trigger('test', { one: 1 }, 2, 'three');
+        ff.trigger('onetime', 'calling once!!');
+
+        setTimeout(function () {
+            ff.trigger('async', 'look mum, im asynchronous');
+            ff.trigger('onetime', 'calling twice... oh no...');
+        }, 5000);
+
+    </script>
+
+</body
+</html>
