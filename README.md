@@ -12,13 +12,19 @@ Still want to try it out? Ok, just include the `lib/flying-functions.js` in your
 After it's loaded you can initialize the engine. There are a options you can pass to the constructor
 check out the annotted source code in `docs/` for more on this.
 
-        <script src="../lib/flying-functions.js"></script>
-        <script>
-            var ff = new FlyingFunctions({
-                width: 640,
-                height: 320
-            });
-        </script>
+```javascript
+    var ff = new FlyingFunctions({
+        width: 640,
+        height: 320
+    });
+
+    ff.on('frame', function () {
+        // my drawing code
+    });
+
+    // start the game loop
+    ff.loop();
+```
 
 Here is a full example (form the test folder):
 
