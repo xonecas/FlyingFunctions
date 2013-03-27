@@ -92,6 +92,6 @@ Here is a full example (form the test folder):
         };
     </script>
 
-</body
+</body>
 </html>
 ```
