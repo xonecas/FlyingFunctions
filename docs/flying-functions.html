@@ -97,11 +97,16 @@ worry about calling this contructor.</p>             </td>             <td class
 
 <p>Usage: <code>new FlyingFunctions({ option: value, ... });</code></p>
 
-<p>options:
- + fps = an integer between 1 and 60
- + canvas = the convas html element
- + c = the drawing context
- + container = the container to which append the canvas</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">FlyingFunctions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+<p>options:</p>
+
+<pre><code> * fps = an integer between 1 and 60
+
+ * canvas = the convas html element
+
+ * c = the drawing context
+
+ * container = the container to which append the canvas
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">FlyingFunctions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">opts</span> <span class="o">=</span> <span class="nx">opts</span> <span class="o">||</span> <span class="p">{};</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <p>defaults, mark them on the opts obj that gets passed to the
 <code>init</code> event.</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="k">this</span><span class="p">.</span><span class="nx">fps</span> <span class="o">=</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">fps</span> <span class="o">||</span> <span class="mi">60</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">container</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-16">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-16">&#182;</a>               </div>               <p>initialize the main canvas</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="k">this</span><span class="p">.</span><span class="nx">canvas</span> <span class="o">=</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">canvas</span><span class="p">;</span>
