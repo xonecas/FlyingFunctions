@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Flying Functions Gravity test</title>
+</head>
+<body>
+
+    <script src="../../lib/flying-functions.js"></script>
+    <script>
+        var ff = new FlyingFunctions({
+                width: 460,
+                height: 320
+            }),
+            g = 0.1;
+
+        var Ball = function (o) {
+            this.x = o.x;
+            this.y = o.y;
+            this.size = o.size;
+            this.dir = o.dir;
+            this.speed = o.speed;
+        };
+
+        Ball.prototype.update = function () {
+            var max = ff.canvas.height,
+                min = 0;
+
+            // bounce off the bottom, aka y >= 320
+            if (this.y >= 320) { //ff.canvas.height
+                this.y = 320;
+                this.dir = -1;
+            }
+
+            // bounce off the top? or should it never reach?
+
+            this.speed = this.dir === 1 ? this.speed + g : this.speed - g;
+            this.y += this.speed;
+            console.log(this.speed, this.y, this.dir);
+
+        };
+
+        Ball.prototype.draw = function () {
+            var c = ff.c;
+            c.save();
+            c.fillStyle = "hsl(190, 100%, 50%)";
+            c.beginPath();
+            c.arc(this.x, this.y, this.size, 0, Math.PI * 2, true);
+            c.fill();
+            c.restore();
+        }
+
+        var ball = new Ball({
+            x: 20,
+            y: 20,
+            size: 10,
+            dir: 1,
+            speed: 1.1
+        });
+
+        ff.on('draw', function () {
+            ball.draw();
+        });
+
+        ff.on('frame', function () {
+            ball.update();
+            this.clear();
+            ball.draw();
+        });
+
+        ff.canvas.addEventListener('click', function (ev) {
+            if (ff.running) {
+                ff.stop();
+            } else {
+                ff.start();
+            }
+        }, false);
+
+        ff.draw();
+    </script>
+
+</body>
+</html>
